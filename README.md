@@ -42,6 +42,11 @@ A modern, feature-rich real-time chat application built with React, Vite, and St
 - **ESLint** - Code linting and formatting
 - **React Hot Toast** - Beautiful toast notifications
 
+<img width="1916" height="927" alt="Screenshot 2026-02-11 101926" src="https://github.com/user-attachments/assets/8ffd06cd-56fd-42ca-b4dd-abbeff5fc296" />
+
+- <img width="1917" height="982" alt="image" src="https://github.com/user-attachments/assets/69b1b306-7074-4d1a-a168-07cd5d6f798c" />
+
+
 ## 📦 Installation
 
 1. **Clone the repository**

@@ -45,6 +45,8 @@ A modern, feature-rich real-time chat application built with React, Vite, and St
 <img width="1916" height="927" alt="Screenshot 2026-02-11 101926" src="https://github.com/user-attachments/assets/8ffd06cd-56fd-42ca-b4dd-abbeff5fc296" />
 
 - <img width="1917" height="982" alt="image" src="https://github.com/user-attachments/assets/69b1b306-7074-4d1a-a168-07cd5d6f798c" />
+<img width="1880" height="953" alt="image" src="https://github.com/user-attachments/assets/7443c4f4-6fdc-4dac-922e-e798536fdc3d" />
+
 
 
 ## 📦 Installation

@@ -1,5 +1,7 @@
 # Real-Time Chat Application Frontend
 
+Real-Time Chat App Backend : https://github.com/a-basuony/Dardasha_real_time_chat_backend
+
 A modern, feature-rich real-time chat application built with React, Vite, and Stream Chat SDK. This frontend provides a seamless messaging experience with video calling capabilities, user authentication, and a beautiful responsive UI.
 
 ## 🚀 Features

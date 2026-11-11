@@ -1,196 +1,120 @@
-# Real-Time Chat Application Frontend
+# Dardasha — Real-Time Chat & Language Exchange
 
-Real-Time Chat App Backend : https://github.com/a-basuony/Dardasha_real_time_chat_backend
+A full-stack React application for messaging, video calls, meeting new people and practicing languages.
 
-A modern, feature-rich real-time chat application built with React, Vite, and Stream Chat SDK. This frontend provides a seamless messaging experience with video calling capabilities, user authentication, and a beautiful responsive UI.
+[**Live demo**](https://dardasha-real-time-chat-frontend.vercel.app/) · [**Frontend repository**](https://github.com/a-basuony/Dardasha_real_time_chat_frontend) · [**Backend API**](https://github.com/a-basuony/Dardasha_real_time_chat_backend) · [**Report a bug**](https://github.com/a-basuony/Dardasha_real_time_chat_frontend/issues)
 
-## 🚀 Features
+![Dardasha conversation interface](https://github.com/user-attachments/assets/8ffd06cd-56fd-42ca-b4dd-abbeff5fc296)
 
-- **Real-time Messaging**: Powered by Stream Chat SDK for instant messaging
-- **Video Calling**: Integrated video calls using Stream Video SDK
-- **User Authentication**: Secure login and signup system
-- **Dark/Light Themes**: Multiple theme options with DaisyUI
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Friend System**: Add and manage friends
-- **Notifications**: Real-time notification system
-- **Onboarding Flow**: Smooth user onboarding experience
-- **Modern UI**: Clean and intuitive interface with Lucide React icons
+## What it does
 
-## 🛠️ Tech Stack
+- Real-time messaging through Stream Chat
+- Video calling through Stream Video React SDK
+- Signup, login and onboarding with a separate Express API
+- Friend requests and recommendations
+- Responsive layouts and multiple DaisyUI themes
+- Client-side routing, data fetching with TanStack Query, and Zustand state
 
-### Core Technologies
-- **React 19** - Modern React with latest features
-- **Vite 6** - Fast build tool and development server
-- **React Router 7** - Client-side routing
-- **TypeScript Support** - Type safety with React types
+## Technology
 
-### UI & Styling
-- **Tailwind CSS 3** - Utility-first CSS framework
-- **DaisyUI 4** - Component library built on Tailwind
-- **Lucide React** - Beautiful icon set
-- **PostCSS** - CSS processing
+| Area | Libraries |
+| --- | --- |
+| Frontend | React 19, Vite 6, JavaScript |
+| Navigation | React Router 7 |
+| Styles | Tailwind CSS 3, DaisyUI 4 |
+| Data and state | Axios, TanStack Query 5, Zustand 5 |
+| Messaging / calls | Stream Chat, Stream Video React SDK |
+| Backend | [Node.js / Express / MongoDB service](https://github.com/a-basuony/Dardasha_real_time_chat_backend) |
 
-### State Management & Data Fetching
-- **Zustand** - Lightweight state management
-- **TanStack Query** - Server state management and caching
-- **Axios** - HTTP client for API requests
+## Run locally
 
-### Chat & Video
-- **Stream Chat** - Real-time messaging infrastructure
-- **Stream Chat React** - React components for Stream Chat
-- **Stream Video React SDK** - Video calling capabilities
+**Prerequisites:** Node.js and npm, a MongoDB database, and Stream Chat application credentials. The frontend relies on the backend for authentication and Stream tokens.
 
-### Development Tools
-- **ESLint** - Code linting and formatting
-- **React Hot Toast** - Beautiful toast notifications
+### 1. Start the backend
 
-<img width="1916" height="927" alt="Screenshot 2026-02-11 101926" src="https://github.com/user-attachments/assets/8ffd06cd-56fd-42ca-b4dd-abbeff5fc296" />
+```bash
+git clone https://github.com/a-basuony/Dardasha_real_time_chat_backend.git
+cd Dardasha_real_time_chat_backend
+npm ci
+cp .env.example .env
+```
 
-- <img width="1917" height="982" alt="image" src="https://github.com/user-attachments/assets/69b1b306-7074-4d1a-a168-07cd5d6f798c" />
-<img width="1880" height="953" alt="image" src="https://github.com/user-attachments/assets/7443c4f4-6fdc-4dac-922e-e798536fdc3d" />
+Edit the backend `.env` with your *own* MongoDB connection string, Stream credentials, and a long random JWT secret. Keep `.env` private. The backend currently reads `STEAM_API_KEY` and `STEAM_API_SECRET` (legacy spelling); match those variable names until the implementation changes.
 
+```bash
+npm run dev
+```
 
+The backend defaults to port `5001` when configured with `PORT=5001`.
 
-## 📦 Installation
+### 2. Start the frontend
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd frontend
-   ```
+Open a second terminal:
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/a-basuony/Dardasha_real_time_chat_frontend.git
+cd Dardasha_real_time_chat_frontend
+npm ci
+cp .env.example .env
+```
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   Update `.env` with your Stream API key:
-   ```
-   VITE_STREAM_API_KEY=your_stream_api_key_here
-   ```
+Set the **public Stream API key** in the frontend `.env`:
 
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-## 🌐 Environment Variables
-
-Create a `.env` file in the root directory with the following variable:
-
-```env
+```dotenv
 VITE_STREAM_API_KEY=your_stream_api_key
 ```
 
-To get your Stream API key:
-1. Sign up at [Stream.io](https://getstream.io/)
-2. Create a new application
-3. Copy your API key from the dashboard
+Never put the Stream **API secret**, MongoDB password or JWT secret into a `VITE_` variable: Vite exposes such variables to the browser.
 
-## 🚀 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## 📁 Project Structure
-
+```bash
+npm run dev
 ```
+
+Open the local address printed by Vite (typically [http://localhost:5173](http://localhost:5173)). In development, `src/lib/axios.js` sends requests to `http://localhost:5001/api`; run the backend on that port. In production, this repository currently uses the published backend API URL from the same file.
+
+## Screenshots
+
+![Dardasha screen](https://github.com/user-attachments/assets/69b1b306-7074-4d1a-a168-07cd5d6f798c)
+![Dardasha screen](https://github.com/user-attachments/assets/7443c4f4-6fdc-4dac-922e-e798536fdc3d)
+
+## Available scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Vite development server |
+| `npm run build` | Build the frontend |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint checks |
+
+## Project layout
+
+```text
 src/
-├── components/          # Reusable UI components
-│   ├── CallButton.jsx
-│   ├── ChatLoader.jsx
-│   ├── FriendCard.jsx
-│   ├── Layout.jsx
-│   ├── Navbar.jsx
-│   ├── Sidebar.jsx
-│   └── ThemeSelector.jsx
-├── pages/              # Page components
-│   ├── CallPage.jsx
-│   ├── ChatPage.jsx
-│   ├── HomePage.jsx
-│   ├── LoginPage.jsx
-│   ├── NotificationsPage.jsx
-│   ├── OnboardingPage.jsx
-│   └── SignUpPage.jsx
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions and configurations
-├── store/              # Zustand stores
-├── constants/          # Application constants
-├── App.jsx             # Main application component
-├── main.jsx           # Application entry point
-└── index.css          # Global styles
+├── components/    Shared components (navbar, sidebar, chat, friends)
+├── pages/         Routes for chat, calls, login and onboarding
+├── hooks/         React hooks
+├── lib/           API client and helpers
+├── store/         Zustand state
+├── constants/     Theme and other constants
+├── App.jsx        App entry and routes
+└── main.jsx       Browser entry point
 ```
 
-## 🎨 Themes
+## Common setup problems
 
-The application supports 29 different themes via DaisyUI:
-- Light & Dark modes
-- Creative themes: Cyberpunk, Synthwave, Retro
-- Professional themes: Corporate, Business, Luxury
-- Nature themes: Forest, Garden, Autumn
-- And many more!
+- **Unable to sign in:** Confirm the backend is running at `http://localhost:5001` and that its database connection works.
+- **Chat/token problems:** Make sure Stream application keys match between the backend and frontend.
+- **CORS or cookie issues:** The backend uses credentialed requests; check its origin configuration and the browser's cookie rules for your local/deployed origins.
+- **Changes to `.env` not reflected:** Restart Vite and the backend.
 
-Themes can be switched using the theme selector in the navigation bar.
+## Contributions
 
-## 🔐 Authentication Flow
+Bug reports with reproduction steps and focused pull requests are welcome. Please include what you tested and do not submit real credentials, tokens or user data.
 
-1. **Unauthenticated users** are redirected to login/signup pages
-2. **Authenticated but not onboarded** users see the onboarding flow
-3. **Fully authenticated users** can access the main application
+## License
 
-## 📱 Responsive Design
-
-- Mobile-first approach
-- Optimized for all screen sizes
-- Touch-friendly interface
-- Adaptive layout for different devices
-
-## 🚀 Deployment
-
-### Build for Production
-```bash
-npm run build
-```
-
-### Preview Production Build
-```bash
-npm run preview
-```
-
-The build will be optimized and ready for deployment to any static hosting service.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](../../issues) page
-2. Create a new issue with detailed information
-3. Include steps to reproduce any bugs
-
-## 🔗 Related Projects
-
-- **Backend API** - Node.js/Express backend for this application
-- **Stream Chat** - Real-time messaging infrastructure
-- **Stream Video** - Video calling platform
+This frontend repository does not currently contain a `LICENSE` file. Public visibility alone does not grant reuse or redistribution rights; contact the owner for licensing details.
 
 ---
 
-Built with ❤️ using React, Vite, and Stream Chat SDK
+If the project was useful, a GitHub star helps other developers discover it.
